@@ -2,28 +2,31 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skills</title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
 <body>
-  <h1>These are my developer skills</h1>
-  <ul>
-    <% skills.forEach(function(s) { %>
-      <li>
-        <a href="/skills/<%= s.id %>">
-            <%= s.skill %>
-          </a>
-          -
-          <%= s.learned ? 'learned' : 'not learned' %>
-      </li>
-      <% }); %>
-  </ul>
-  <a href="/skills/new">Add a skill</a>
-  <a href="/">Home</a>
+    <h1>These are my developer skills</h1>
+    <ul>
+        <% skills.forEach(function(s) { %>
+            <form action="/skills/<%= s.id %>?_method=DELETE" class="delete-form" method="POST">
+                <button type="submit">X</button>
+            </form>
+            <li>
+                <a href="/skills/<%= s.id %>">
+                    <%= s.skill %>
+                </a>
+                -
+                <%= s.learned ? 'learned' : 'not learned' %>
+            </li>
+            <% }); %>
+    </ul>
+    <a href="/skills/new">Add a skill</a>
+    <a href="/">Home</a>
 </body>
 
 </html>

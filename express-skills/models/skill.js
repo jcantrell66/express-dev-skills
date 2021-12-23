@@ -7,7 +7,8 @@ const skills = [
 module.exports = {
     getAll,
     getOne,
-    create
+    create,
+    deleteOne
 };
 
 //this passes all objects to the controller
@@ -25,4 +26,11 @@ function create(newSkill) {
     newSkill.id = skills.length + 1;
     newSkill.learned = true;
     skills.push(newSkill);
+}
+
+//this matches the id of the skill that the user wants to delete with the id of the
+//item in the database, and splices it
+function deleteOne(id) {
+    const idx = skills.findIndex(skill => skill.id === parseInt(id));
+    skills.splice(idx, 1);
 }

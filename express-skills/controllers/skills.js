@@ -4,7 +4,8 @@ module.exports = {
     index,
     show,
     new: newSkill,
-    create
+    create,
+    delete: deleteSkill
 };
 
 //this gets all the skills on the page in a list
@@ -30,5 +31,11 @@ function newSkill(req, res) {
 //this passes the input the user gave to the model to create a new skill
 function create(req, res) {
     Skill.create(req.body);
+    res.redirect('/skills');
+}
+
+//this passes the id of the item that the user wants to delete
+function deleteSkill(req, res) {
+    Skill.deleteOne(req.params.id);
     res.redirect('/skills');
 }
